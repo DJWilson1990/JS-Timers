@@ -1,19 +1,38 @@
 console.log("Good afternoon!");
 
-function showMsg() {
-  setTimeout(function () {
-    alert("You pressed the button! You Shouldn't have pressed the button");
-  }, 1);
-}
-
+//get references to DOM elements
 const btn = document.getElementById("btn");
-btn.addEventListener("click", showMsg);
+const btn2 = document.getElementById("btn2");
+const popUp = document.getElementById("popUp");
+//attach event listeners
+btn.addEventListener("click", function () {
+  showAlertMsg("You pressed the wrong button");
+}); //this one is the alert
+btn.addEventListener("mouseover", showPopup);
+btn.addEventListener("mouseleave", cancelPopUp);
+btn2.addEventListener("click", function () {
+  showAlertMsg("You pressed the correct button");
+}); //this one is the alert
+btn2.addEventListener("mouseover", showPopUp2);
 
-function showPopup() {
-  setTimeout(function () {
-    //need to link my p tag here somehow.
-  });
+function showAlertMsg(msg) {
+  alert(msg);
 }
 
-const popUp = document.getElementById("popUp");
-btn.addEventListener("mouseover", showPopup);
+// This first button uses a class and css.
+function showPopup() {
+  popUp.classList.add("visible");
+}
+function cancelPopUp() {
+  setTimeout(function () {
+    popUp.classList.remove("visible");
+  }, 3000);
+}
+
+//This second button is writing to the DOM. JS only.
+function showPopUp2() {
+  popUp2.innerText = "DO IT!";
+  setTimeout(function () {
+    popUp2.innerText = "";
+  }, 3000);
+}
