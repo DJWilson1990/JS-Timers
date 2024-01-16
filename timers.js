@@ -26,7 +26,7 @@ function showPopup() {
 function cancelPopUp() {
   setTimeout(function () {
     popUp.classList.remove("visible");
-  }, 3000);
+  }, 5000);
 }
 
 //This second button is writing to the DOM. JS only.
@@ -34,5 +34,5 @@ function showPopUp2() {
   popUp2.innerText = "DO IT!";
   setTimeout(function () {
     popUp2.innerText = "";
-  }, 3000);
+  }, 5000);
 }
